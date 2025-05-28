@@ -1,0 +1,17 @@
+obtained from:
+https://developer.spotify.com/documentation/web-api/reference/get-an-artist
+
+data, type
+
+external_urls object
+followers object
+genres array of strings
+href string
+id string
+images array of ImageObject
+name string
+popularity integer
+type string
+uri string
+
+

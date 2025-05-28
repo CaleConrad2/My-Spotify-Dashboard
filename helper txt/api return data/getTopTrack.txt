@@ -1,0 +1,25 @@
+obtained from:
+https://developer.spotify.com/documentation/web-api/reference/get-track
+
+data, type
+
+album object
+artists array of SimplifiedArtistObject
+available_markets array of strings
+disc_number integer
+duration_ms integer
+explicit boolean
+external_ids object
+external_urls object
+href string
+id string
+is_playable boolean
+linked_from object
+restrictions object
+name string
+popularity integer
+preview_url string (deprecated)
+track_number integer
+type string
+uri string
+is_local boolean
