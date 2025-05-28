@@ -1,0 +1,11 @@
+TO PUSH TO GITHUB
+git add .
+git commit -m "Your message"
+git push
+
+TO REPLACE YOUR WHOLE CODE WITH THE CODE ON GITHUB REPO:
+Remove-Item -Recurse -Force .git
+git init
+git remote add origin https://github.com/easy3223/My-Spotify-Dashboard.git
+git fetch origin
+git reset --hard origin/main
