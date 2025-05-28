@@ -5,8 +5,9 @@
 </head>
 <body>
     <h1>Callback</h1>
-    <script src="script.js"></script>
-    <script>
+    <script type = 'module'>
+        import { getToken } from './js/auth.js';
+        
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         if (code) {

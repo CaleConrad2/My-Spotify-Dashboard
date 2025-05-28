@@ -1,7 +1,7 @@
 TO PUSH TO GITHUB
 git add .
 git commit -m "Your message"
-git push
+git push origin main
 
 TO REPLACE YOUR WHOLE CODE WITH THE CODE ON GITHUB REPO:
 Remove-Item -Recurse -Force .git
