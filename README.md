@@ -89,3 +89,11 @@ This is a personal project that uses Spotify's Web API.
 Authentication tokens are stored in localStorage for the duration of the user's session.
 Access tokens are short-lived and automatically refreshed using a refresh token stored locally.
 No data is ever transmitted or stored on any server other than Spotify.
+
+##
+
+Disclaimer
+
+This is a personal project intended for local use and experimentation.  
+It is **not hardened for production** and may contain unpatched security issues (e.g., XSS).  
+If you choose to deploy it, **do so at your own risk.**
