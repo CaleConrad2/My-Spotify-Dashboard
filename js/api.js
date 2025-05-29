@@ -9,7 +9,11 @@ export async function getTopArtists() { //displays top 20 artists
         console.log(data);
 
         if (!res.ok) {
-            resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
+            if (data.error.status === 401) {
+                resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            } else {
+                resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
+            }
             return;
         }
 
@@ -42,7 +46,11 @@ export async function getTopTracks() { //displays top 20 tracks
         const data = await res.json(); //await here because reading and parsing data as .json takes time
         console.log(data);
         if (!res.ok) {
-            resultsDiv.innerText = "Failed to load top tracks: " + data.error.message //use data not res because res is Response type with metadata about the HTTP response, not the actual data
+            if (data.error.status === 401) {
+                resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            } else {
+                resultsDiv.innerText = "Failed to load top tracks: " + data.error.message;
+            }
             return;
         }
 
@@ -74,7 +82,11 @@ export async function getRecentlyPlayed() {
         console.log(data);
 
         if (!res.ok) {
-            resultsDiv.innerText = "Failed to load top tracks: " + data.error.message;
+            if (data.error.status === 401) {
+                resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            } else {
+                resultsDiv.innerText = "Failed to load recently played tracks: " + data.error.message;
+            }
             return;
         }
 
