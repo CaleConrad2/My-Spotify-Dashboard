@@ -193,6 +193,7 @@ export async function getUserProfile() {
     buttonsDiv.innerHTML = `
       <button onclick="location.href='top-tracks.html'" style="padding: 10px 16px; border: none; border-radius: 8px; background-color: #1DB954; color: white; font-weight: bold; cursor: pointer;">Top Tracks</button>
       <button onclick="location.href='top-artists.html'" style="padding: 10px 16px; border: none; border-radius: 8px; background-color: #1DB954; color: white; font-weight: bold; cursor: pointer">Top Artists</button>
+      <button onclick="location.href='recently-played.html'" style="padding: 10px 16px; border: none; border-radius: 8px; background-color: #1DB954; color: white; font-weight: bold; cursor: pointer">Recently Played</button>
       <button onclick="location.href='charts.html'" style="padding: 10px 16px; border: none; border-radius: 8px; background-color: #1DB954; color: white; font-weight: bold; cursor: pointer">Charts</button>
     `;
   }

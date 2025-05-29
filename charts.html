@@ -18,9 +18,23 @@
         <h1>Charts</h1>
         <div id="user-card"></div>
         <div id="charts">
-            <canvas id="TopArtistsByPlayCount" width="600" height="400"></canvas>
-            <canvas id="TopTracksByDuration" width="600" height="400"></canvas>
-            <canvas id="ListeningHeatMap" width="600" height="400"></canvas>
+            <div class="table-wrapper">
+                <div style="width: 80%; max-width: 900px;">
+                    <canvas id="TopArtistsByPlayCount"></canvas>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <div style="width: 80%; max-width: 900px;">
+                    <canvas id="TopTracksByDuration"></canvas>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <div style="width: 80%; max-width: 900px;">
+                    <canvas id="ListeningHeatMap"></canvas>
+                </div>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.2.0/dist/chartjs-chart-matrix.min.js"></script>
