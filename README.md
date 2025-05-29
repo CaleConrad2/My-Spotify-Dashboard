@@ -90,9 +90,7 @@ Authentication tokens are stored in localStorage for the duration of the user's 
 Access tokens are short-lived and automatically refreshed using a refresh token stored locally.
 No data is ever transmitted or stored on any server other than Spotify.
 
-##
-
-Disclaimer
+## Disclaimer
 
 This is a personal project intended for local use and experimentation.  
 It is **not hardened for production** and may contain unpatched security issues (e.g., XSS).  
