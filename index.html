@@ -4,9 +4,22 @@
         <title>Spotify Dashboard</title> <!--title of the page-->
     </head> <!--end of the head tag-->
     <body> <!--everything inside the body tag is visible to the user-->
+        <div class="navbar">
+            <div class="nav-links">
+                <a href="top-tracks.html">Top Tracks</a>
+                <a href="top-artists.html">Top Artists</a>
+                <a href="recently-played.html">Top Genres</a>
+            </div>
+            <button id="auth-btn"></button>
+        </div>
+
+
+
+
         <h1>Spotify Stats Dashboard</h1> <!--heading 1-->
-        <button onclick="getTopArtists()">Top Artists</button>
-        <button onclick="getTopTracks()">Top Tracks</button>
+        <button onclick="window.location.href='top-artists.html'">Top Artists</button>
+        <button onclick="window.location.href='top-tracks.html'">Top Tracks</button>
+        <button onclick="window.location.href='recently-played.html'">Recently Played</button>
         <p>Track your top songs, artists and genres.</p> <!--paragraph-->
         <button onclick="startLogin()">Login with Spotify</button> <!--button-->
         <div id="results"></div>

@@ -1,0 +1,11 @@
+obtained from:
+https://developer.spotify.com/documentation/web-api/reference/get-recently-played
+
+data, type
+
+href string
+limit integer
+next string
+cursors object
+total integer
+items array of PlayHistoryObject
