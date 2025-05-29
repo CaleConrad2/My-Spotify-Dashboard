@@ -86,4 +86,6 @@ MIT License. This project is not affiliated with or endorsed by Spotify.
 ## Privacy Notice
 
 This is a personal project that uses Spotify's Web API.  
-No user data is stored, tracked, or shared. Access tokens are stored temporarily in memory (sessionStorage) for your active session only.
+Authentication tokens are stored in localStorage for the duration of the user's session.
+Access tokens are short-lived and automatically refreshed using a refresh token stored locally.
+No data is ever transmitted or stored on any server other than Spotify.
