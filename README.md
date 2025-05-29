@@ -28,16 +28,14 @@ Heatmap from Charts Page:
   - Top Artists by play ranking
   - Top Tracks by duration
   - Listening time of day (heatmap)
-- See your Recently Played tracks with rich metadata
-- Personalized User Profile Card
-- Responsive, modular, and styled with custom CSS
+- See your Recently Played tracks
+- Stylized with CSS
 
 ## Tech Stack
 
 - HTML, CSS, JavaScript
 - Spotify Web API (OAuth + endpoints)
 - Chart.js and chartjs-chart-matrix for data visualizations
-- Optional hosting via Vercel or GitHub Pages
 
 
 ## What I learned from this project:
