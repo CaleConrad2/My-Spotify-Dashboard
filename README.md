@@ -1,6 +1,21 @@
 # Spotify Stats Dashboard
 
-A personal dashboard to visualize your Spotify listening habits using the Spotify Web API. View your top tracks, top artists, listening patterns, and custom data charts — all with a clean and responsive UI.
+Visualize your Spotify listening habits with user charts, top tracks, and artist insights — built using the Spotify Web API, Chart.js, and secure PKCE authentication.
+
+## Screenshots
+Home Page:
+
+![Home User Not Logged In Screenshot](https://github.com/user-attachments/assets/a0a7f722-5090-4a7c-a1e9-010158174c78)
+
+![Home User Logged In Screenshot](https://github.com/user-attachments/assets/ad8aa06a-a9e4-4555-b8c0-e4892a59a88e)
+
+Top Tracks Page:
+
+![Screenshot 2025-05-29 174258](https://github.com/user-attachments/assets/01635e83-f105-4021-9263-d2427fcfc933)
+
+Heatmap from Charts Page:
+
+![Screenshot 2025-05-29 174406](https://github.com/user-attachments/assets/42a2f1b6-c31c-48b4-9b13-8ce1c7672991)
 
 ---
 
@@ -25,52 +40,52 @@ A personal dashboard to visualize your Spotify listening habits using the Spotif
 - Optional hosting via Vercel or GitHub Pages
 
 
-Privacy Notice
-This is a personal project that uses Spotify's Web API.
-No user data is stored, tracked, or shared. All access tokens are stored in localStorage only for the duration of your session.
-
-License
-This project is licensed under the MIT License. It is not affiliated with or endorsed by Spotify.
-
-Roadmap
-Add backend for storing long-term listening history
-
-
 ## What I learned from this project:
 
 
-How to connect with a popular API, Spotify, and how to use the data obtained from the API to show user information.
+- Connected to Spotify’s Web API and parsed real user data from protected endpoints
+  
+- Implemented secure PKCE flow to authorize users without leaking credentials
+  
+- Used Chart.js + Matrix plugin to create responsive bar and heatmap visualizations
 
-How to wireframe with HTML and use JavaScript to build and show the correct data on the web page.
+- Wireframe with HTML and use JavaScript to build and show the correct data on the web page.
 
-How to access the API via an access token obtained from PKCE Code Flow Authorization.
+- Use a refresh key to continously access the API when needed so the user only has to authorize once.
 
-How to use a refresh key to continously access the API when needed so the user only has to authorize once.
+- Style HTML elements, classes and IDs with CSS.
 
-How to style HTML elements, classes and IDs with CSS.
+- Import and export functions as well as modulate scripts for their use.
 
-How to use Chart.js to show information via bar graphs and a heatmap.
+- Use fetch and await to obtain a Response type object and parse the object for its data via .json().
 
-How to import and export functions as well as modulate scripts for their use.
+- DOM manipulation via innerHTML, getElementById and addEventListener.
 
-How to use fetch and await to obtain a Response type object and parse the object for its data via .json().
+- Handle events such as button presses to log in.
 
-How to handle errors using try and catch.
+- Handle logging a user in and obtaining an access key via callback URL.
 
-DOM manipulation via innerHTML, getElementById and addEventListener.
+- Conditionally show user UI based on log in state.
 
-How to handle events such as button presses to log in.
+- Debugging tools such as console.log() to show in browser console.
 
-How to handle logging a user in and obtaining an access key via callback URL.
+- Browser console elements such as localStorage, Console, Elements used in debugging and building.
 
-How to conditionally show user UI based on log in state.
-
-Debugging tools such as console.log() to show in browser console.
-
-Browser console elements such as localStorage, Console, Elements used in debugging and building.
-
-How to make clickable tables with hyperlinks.
-
-Structuring code to be able to revisit it later and build on it.
+- Structuring code to be able to revisit it later and build on it.
 
 And much more I'm forgetting about at the moment!
+
+
+## Roadmap
+
+- [ ] Add backend support to persist long-term listening history and access key storage
+- [ ] More stylistic features such as more text, animation, ect.
+
+## License
+
+MIT License. This project is not affiliated with or endorsed by Spotify.
+
+## Privacy Notice
+
+This is a personal project that uses Spotify's Web API.  
+No user data is stored, tracked, or shared. Access tokens are stored temporarily in memory (sessionStorage) for your active session only.
