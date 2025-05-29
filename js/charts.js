@@ -29,20 +29,44 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       if (!topArtists.ok) {
         if (topArtistsData.error.status === 401) {
-            resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            const userCard = document.getElementById('user-card');
+            userCard.innerHTML = `
+                <div style="text-align: center; padding: 32px;">
+                    <button onclick="startLogin()" style="padding: 16px 32px; font-size: 18px; font-weight: bold; background-color: #1DB954; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                        Log in with Spotify
+                    </button>
+                    <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
+                </div>
+            `;
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }
         return;
       } else if (!topTracks.ok) {
         if (topTracksData.error.status === 401) {
-            resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            const userCard = document.getElementById('user-card');
+            userCard.innerHTML = `
+                <div style="text-align: center; padding: 32px;">
+                    <button onclick="startLogin()" style="padding: 16px 32px; font-size: 18px; font-weight: bold; background-color: #1DB954; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                        Log in with Spotify
+                    </button>
+                    <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
+                </div>
+            `;
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }
       } else if (!recentlyPlayed.ok) {
         if (recentlyPlayedData.error.status === 401) {
-            resultsDiv.innerText = "Please log in to view your Spotify dashboard";
+            const userCard = document.getElementById('user-card');
+            userCard.innerHTML = `
+                <div style="text-align: center; padding: 32px;">
+                    <button onclick="startLogin()" style="padding: 16px 32px; font-size: 18px; font-weight: bold; background-color: #1DB954; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                        Log in with Spotify
+                    </button>
+                    <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
+                </div>
+            `;
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }

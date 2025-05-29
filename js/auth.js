@@ -119,3 +119,5 @@ export async function fetchWithAuth(url) {
 
     return res;
 }
+
+window.startLogin = startLogin;
