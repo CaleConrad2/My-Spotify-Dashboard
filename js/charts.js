@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
                 </div>
             `;
+            document.getElementById('charts').style.display = 'none';
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
                 </div>
             `;
+            document.getElementById('charts').style.display = 'none';
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }
@@ -67,10 +69,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p style="margin-top: 16px; color: #666;">Please log in to view your Spotify dashboard</p>
                 </div>
             `;
+            document.getElementById('charts').style.display = 'none';
         } else {
             resultsDiv.innerText = "Failed to load top artists: " + data.error.message;
         }
       }
+
+      // If we get here, user is logged in, so show the charts
+      document.getElementById('charts').style.display = 'block';
 
       const artists = topArtistsData.items;
       const tracks = topTracksData.items.sort((a, b) => b.duration_ms - a.duration_ms).slice(0, 10);

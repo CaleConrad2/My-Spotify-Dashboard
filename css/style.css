@@ -1,17 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    background-color: #191414;
+    background-color: #000000;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .nav-links a {
     color: white;
     margin-right: 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.5px;
 }
 
 #auth-btn {
@@ -65,15 +75,33 @@
   margin-top: 24px;
 }
 
+.table-wrapper > div {
+  background-color: #edefeb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .spotify-table {
   border-collapse: collapse;
   width: 80%;
   max-width: 900px;
+  background-color: #edefeb;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .spotify-table th, .spotify-table td {
   text-align: left;
-  padding: 8px;
+  padding: 12px;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.spotify-table th {
+  background-color: #313131;
+  color: white;
+  font-weight: 500;
 }
 
 .spotify-table img {
@@ -85,4 +113,21 @@
 h1 {
     text-align: center;
     margin: 20px 0;
+    display: inline-block;
+    padding: 8px 24px;
+    background-color: #edefeb;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(247, 251, 245, 0.456);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#user-card > div {
+    background-color: #d8dfd3;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    width: fit-content;
+    margin: 0 auto;
 }
