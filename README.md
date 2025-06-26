@@ -5,17 +5,24 @@ Visualize your Spotify listening habits with user charts, top tracks, and artist
 ## Screenshots
 Home Page:
 
-![Home User Not Logged In Screenshot](https://github.com/user-attachments/assets/a0a7f722-5090-4a7c-a1e9-010158174c78)
+![Screenshot 2025-06-26 095845](https://github.com/user-attachments/assets/1cfb3715-830c-489d-bb66-23b4c2aa3377)
+![Screenshot 2025-06-26 095935](https://github.com/user-attachments/assets/5d96cde7-dd13-4f28-a46c-bf93ccfed4e5)
 
-![Home User Logged In Screenshot](https://github.com/user-attachments/assets/ad8aa06a-a9e4-4555-b8c0-e4892a59a88e)
 
 Top Tracks Page:
 
-![Screenshot 2025-05-29 174258](https://github.com/user-attachments/assets/01635e83-f105-4021-9263-d2427fcfc933)
+![Screenshot 2025-06-26 095940](https://github.com/user-attachments/assets/0759fe0b-fc69-48a6-b7bb-b086a5f69650)
 
-Heatmap from Charts Page:
 
-![Screenshot 2025-05-29 174406](https://github.com/user-attachments/assets/42a2f1b6-c31c-48b4-9b13-8ce1c7672991)
+Recently Played Tracks:
+
+![Screenshot 2025-06-26 095944](https://github.com/user-attachments/assets/b631c43d-9cf8-4900-b74e-abea4ac38d68)
+
+
+Charts Page:
+
+![Screenshot 2025-06-26 095949](https://github.com/user-attachments/assets/cb36b234-f367-4dea-ba91-f5299cdbed73)
+
 
 ---
 
