@@ -1,133 +1,431 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for consistent theming */
+:root {
+    --primary-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --secondary-gradient: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+    --spotify-green: #1DB954;
+    --spotify-dark: #121212;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.6);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    font-family: Arial, sans-serif;
+    background: var(--primary-gradient);
+    background-attachment: fixed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
+/* Subtle animated background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(29, 185, 84, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(30, 215, 96, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: backgroundShift 30s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-5px, -5px) scale(1.02); }
+}
+
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
-    background-color: #000000;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
-    color: white;
-    margin-right: 20px;
+    color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
+.nav-links a:hover {
+    background: var(--hover-bg);
+    transform: translateY(-2px);
+}
+
+/* Auth Button */
 #auth-btn {
-    background-color: #1DB954;
+    background: var(--spotify-green);
     color: white;
     border: none;
-    padding: 8px 16px;
-    font-weight: bold;
-       cursor: pointer;
-       border-radius: 20px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
 }
 
-/* Add styles for the home buttons */
-#home-buttons {
-    display: flex;
-    flex-direction: column;;
-    align-items: center; /* horizontal centering */
-    gap: 16px;
-    margin-top: 24px;
-  }
-
-.user-card {
-  text-align: center;
-  padding: 24px;
+#auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+    background: #1ed760;
 }
 
-.user-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 16px;
-}
-
-.user-name {
-  margin: 0;
-}
-
-.spotify-link {
-  color: #1DB954;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.spotify-link:hover {
-  text-decoration: underline;
-}
-
-.table-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
-
-.table-wrapper > div {
-  background-color: #edefeb;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.spotify-table {
-  border-collapse: collapse;
-  width: 80%;
-  max-width: 900px;
-  background-color: #edefeb;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.spotify-table th, .spotify-table td {
-  text-align: left;
-  padding: 12px;
-  border-bottom: 1px solid #d0d0d0;
-}
-
-.spotify-table th {
-  background-color: #313131;
-  color: white;
-  font-weight: 500;
-}
-
-.spotify-table img {
-  border-radius: 8px;
-  width: 60px;
-  height: 60px;
-}
-
+/* Main Content */
 h1 {
     text-align: center;
-    margin: 20px 0;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
     display: inline-block;
-    padding: 8px 24px;
-    background-color: #edefeb;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(247, 251, 245, 0.456);
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    letter-spacing: -0.5px;
 }
 
-#user-card > div {
-    background-color: #edefeb;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 32px;
-    width: fit-content;
-    margin: 0 auto;
+/* User Card */
+.user-card {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+.user-card > div {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.user-card > div:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.user-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--glass-border);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.user-image:hover {
+    transform: scale(1.05);
+    border-color: var(--spotify-green);
+}
+
+.user-name {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.spotify-link {
+    color: var(--spotify-green);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    background: rgba(29, 185, 84, 0.1);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.spotify-link:hover {
+    background: rgba(29, 185, 84, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+}
+
+/* Home Buttons */
+#home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+}
+
+#home-buttons a {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+#home-buttons a:hover {
+    background: var(--hover-bg);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+#home-buttons h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#home-buttons p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    max-width: 1200px;
+}
+
+.table-wrapper > div {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+/* Spotify Table */
+.spotify-table {
+    border-collapse: collapse;
+    width: 100%;
+    background: transparent;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.spotify-table th, .spotify-table td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.spotify-table th {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.spotify-table tr {
+    transition: all 0.3s ease;
+}
+
+.spotify-table tr:hover {
+    background: var(--hover-bg);
+}
+
+.spotify-table img {
+    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.spotify-table img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        padding: 1rem 2rem;
+        margin: 1rem 0;
+    }
+    
+    .table-wrapper {
+        padding: 0 1rem;
+    }
+    
+    .table-wrapper > div {
+        padding: 1rem;
+    }
+    
+    .spotify-table th, .spotify-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    #home-buttons {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--spotify-green);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--spotify-green);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1ed760;
+}
+
+.home-btn {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.home-btn:hover {
+    background: var(--hover-bg) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.home-btn h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.home-btn p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.green-btn {
+    display: inline-block;
+    width: 45%;
+    min-width: 220px;
+    margin: 1.2rem 2%;
+    padding: 1.2rem 0;
+    background: var(--spotify-green);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(29,185,84,0.10);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    letter-spacing: 0.5px;
+}
+.green-btn:hover {
+    background: #1ed760;
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(29,185,84,0.18);
+    transform: translateY(-2px) scale(1.03);
 }

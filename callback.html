@@ -1,29 +1,77 @@
-<!DOCTYPE html>  <!-- this is the one time getting your spotify key-->
+<!DOCTYPE html>
 <html>
 <head>
-    <title>My Spotify Callback</title>
+    <title>Spotify Authentication</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .callback-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        
+        .callback-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--spotify-green);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        .status-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 <body>
-    <h1>Callback</h1>
-    <div id="status">Processing...</div>
-    <script type = 'module'>
+    <div class="callback-container">
+        <div class="callback-content">
+            <div class="loading-spinner"></div>
+            <div class="status-text" id="status">Connecting to Spotify...</div>
+        </div>
+    </div>
+    
+    <script type="module">
         import { getToken } from './js/auth.js';
         
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         const statusDiv = document.getElementById('status');
         
-        console.log('Callback received with code:', code);
-        console.log('Current localStorage code_verifier:', localStorage.getItem('code_verifier'));
-        
         if (code) {
-            statusDiv.textContent = 'Exchanging code for token...';
-            getToken(code); //calls function from script.js
+            statusDiv.textContent = 'Authenticating...';
+            try {
+                await getToken(code);
+            } catch (error) {
+                console.error('Authentication error:', error);
+                statusDiv.textContent = 'Authentication failed. Redirecting...';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
         } else {
-            statusDiv.textContent = "Login failed: no code found.";
-            console.error('No code found in URL parameters');
+            statusDiv.textContent = "Authentication failed. Redirecting...";
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
         }
     </script>
-    
 </body>
 </html>
