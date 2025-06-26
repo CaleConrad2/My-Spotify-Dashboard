@@ -21,11 +21,17 @@ const base64encode = (input) => {
 };
 
 export async function startLogin() {
+    // Clear any existing tokens and verifiers to start fresh
+    localStorage.removeItem('code_verifier');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    
     const codeVerifier = generateRandomString(64);
     const hashed = await sha256(codeVerifier);
     const codeChallenge = base64encode(hashed);
 
     localStorage.setItem('code_verifier', codeVerifier);
+    console.log('Generated code verifier:', codeVerifier);
 
     const scope = 'user-top-read user-read-recently-played';
 
@@ -40,11 +46,18 @@ export async function startLogin() {
     };
 
     authUrl.search = new URLSearchParams(params).toString();
+    console.log('Redirecting to:', authUrl.toString());
     window.location.href = authUrl.toString();
 }
 
 export async function getToken(code) {
     const codeVerifier = localStorage.getItem('code_verifier');
+    console.log('Retrieved code verifier:', codeVerifier);
+    
+    if (!codeVerifier) {
+        document.body.innerHTML = "Error: No code verifier found. Please try logging in again.";
+        return;
+    }
 
     const body = new URLSearchParams({
         client_id: clientId,
@@ -53,6 +66,8 @@ export async function getToken(code) {
         redirect_uri: redirectUri,
         code_verifier: codeVerifier
     });
+
+    console.log('Sending token request with code:', code);
 
     const response = await fetch("https://accounts.spotify.com/api/token", {
         method: 'POST',
@@ -70,9 +85,12 @@ export async function getToken(code) {
         if (data.refresh_token) {
             localStorage.setItem('refresh_token', data.refresh_token);
         }
+        // Clear the code verifier after successful token exchange
+        localStorage.removeItem('code_verifier');
         window.location.href='index.html';
     } else {
-        document.body.innerHTML = "Token fetch failed: " + JSON.stringify(data);
+        console.error('Token fetch failed:', data);
+        document.body.innerHTML = "Token fetch failed: " + JSON.stringify(data) + "<br><br><a href='index.html'>Try again</a>";
     }
 }
 

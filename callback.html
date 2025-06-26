@@ -5,15 +5,23 @@
 </head>
 <body>
     <h1>Callback</h1>
+    <div id="status">Processing...</div>
     <script type = 'module'>
         import { getToken } from './js/auth.js';
         
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
+        const statusDiv = document.getElementById('status');
+        
+        console.log('Callback received with code:', code);
+        console.log('Current localStorage code_verifier:', localStorage.getItem('code_verifier'));
+        
         if (code) {
+            statusDiv.textContent = 'Exchanging code for token...';
             getToken(code); //calls function from script.js
         } else {
-            document.body.innerHTML = "Login failed: no code found.";
+            statusDiv.textContent = "Login failed: no code found.";
+            console.error('No code found in URL parameters');
         }
     </script>
     
